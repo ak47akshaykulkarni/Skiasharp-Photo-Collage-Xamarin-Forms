@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PhotoCollage.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:PhotoCollage"
+    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms">
+    <StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="ButtonSave" Text="Wadap" />
+            <Button Text="save" />
+        </StackLayout>
+        <skia:SKCanvasView
+            x:Name="canvasViews"
+            HorizontalOptions="FillAndExpand"
+            PaintSurface="CanvasView_OnPaintSurface"
+            VerticalOptions="FillAndExpand" />
+    </StackLayout>
+</ContentPage>
