@@ -11,10 +11,12 @@
         <StackLayout Orientation="Horizontal">
             <Button
                 x:Name="ButtonPickImage"
+                BackgroundColor="Coral"
                 Clicked="ButtonPickImage_OnClicked"
-                Text="Wadap" />
+                Text="Pick Image" />
             <Button
                 x:Name="ButtonSave"
+                BackgroundColor="Violet"
                 Clicked="ButtonSave_OnClicked"
                 Text="save" />
             <Image
