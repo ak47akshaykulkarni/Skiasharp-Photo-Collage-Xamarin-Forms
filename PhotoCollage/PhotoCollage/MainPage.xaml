@@ -3,12 +3,24 @@
     x:Class="PhotoCollage.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:local="clr-namespace:PhotoCollage"
-    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms">
+    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    ios:Page.UseSafeArea="true">
     <StackLayout>
         <StackLayout Orientation="Horizontal">
-            <Button x:Name="ButtonSave" Text="Wadap" />
-            <Button Text="save" />
+            <Button
+                x:Name="ButtonPickImage"
+                Clicked="ButtonPickImage_OnClicked"
+                Text="Wadap" />
+            <Button
+                x:Name="ButtonSave"
+                Clicked="ButtonSave_OnClicked"
+                Text="save" />
+            <Image
+                x:Name="TestImage"
+                Aspect="AspectFit"
+                HeightRequest="100" />
         </StackLayout>
         <skia:SKCanvasView
             x:Name="canvasViews"
