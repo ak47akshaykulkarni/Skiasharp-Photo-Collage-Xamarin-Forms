@@ -7,27 +7,23 @@
     xmlns:local="clr-namespace:PhotoCollage"
     xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
     ios:Page.UseSafeArea="true">
-    <StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Button
-                x:Name="ButtonPickImage"
-                BackgroundColor="Coral"
-                Clicked="ButtonPickImage_OnClicked"
-                Text="Pick Image" />
-            <Button
-                x:Name="ButtonSave"
-                BackgroundColor="Violet"
-                Clicked="ButtonSave_OnClicked"
-                Text="save" />
-            <Image
-                x:Name="TestImage"
-                Aspect="AspectFit"
-                HeightRequest="100" />
-        </StackLayout>
-        <skia:SKCanvasView
-            x:Name="canvasViews"
-            HorizontalOptions="FillAndExpand"
-            PaintSurface="CanvasView_OnPaintSurface"
-            VerticalOptions="FillAndExpand" />
-    </StackLayout>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            x:Name="ButtonPickImage"
+            Clicked="ButtonPickImage_OnClicked"
+            Text="Pick Image" />
+        <ToolbarItem
+            x:Name="ButtonSave"
+            Clicked="ButtonSave_OnClicked"
+            Text="Save" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <skia:SKCanvasView
+                x:Name="canvasViews"
+                HorizontalOptions="FillAndExpand"
+                PaintSurface="CanvasView_OnPaintSurface"
+                VerticalOptions="FillAndExpand" />
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>

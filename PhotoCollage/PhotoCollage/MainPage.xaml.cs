@@ -32,13 +32,6 @@ namespace PhotoCollage
             _height = args.Info.Height;
             ImageInfo = args.Info;
             canvas.Clear();
-            using (var paint = new SKPaint())
-            {
-                paint.Color = SKColors.DarkCyan;
-                paint.Style = SKPaintStyle.Fill;
-                canvas.DrawCircle(ImageInfo.Width/2f,ImageInfo.Height/2f,ImageInfo.Width/3f,paint);
-            }
-
             SKRect[] rects = new[]
             {
                 new SKRect(0, 0, _width / 2f, _height / 2f),
@@ -64,14 +57,14 @@ namespace PhotoCollage
                 {
                     paint.StrokeWidth = 15;
                     paint.Color = SKColors.Black;
-                    paint.Style = SKPaintStyle.Stroke;
+                    paint.Style = SKPaintStyle.Fill;
                     paint.TextAlign = SKTextAlign.Center;
                     if (file == null) return;
                     var bitmap = SKBitmap.Decode(file.GetStream());
                     canvas.DrawImage(SKImage.FromBitmap(bitmap), rects[i], paint);
                     paint.TextSize = 250;
                     canvas.DrawText(i.ToString(), new SKPoint(rects[i].MidX, rects[i].MidY), paint);
-                    canvas.DrawRect(rects[i], paint);
+                    //canvas.DrawRect(rects[i], paint);
                     i++;
                 }
             }
@@ -79,7 +72,11 @@ namespace PhotoCollage
 
         private async void ButtonSave_OnClicked(object sender, EventArgs e)
         {
-            TestImage.Source = null;
+            _files.RemoveAt(3);
+            _files.RemoveAt(2);
+            _files.RemoveAt(1);
+            _files.RemoveAt(0);
+            canvasViews.InvalidateSurface();
         }
 
         private async void ButtonPickImage_OnClicked(object sender, EventArgs e)
@@ -102,7 +99,6 @@ namespace PhotoCollage
                 _files.Add(pickedImage);
             }
             canvasViews.InvalidateSurface();
-            TestImage.Source = ImageSource.FromStream(() => pickedImage.GetStream());
         }
     }
 }
