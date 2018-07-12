@@ -3,17 +3,27 @@
     x:Class="PhotoCollage.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:local="clr-namespace:PhotoCollage"
-    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms">
-    <StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Button x:Name="ButtonSave" Text="Wadap" />
-            <Button Text="save" />
-        </StackLayout>
-        <skia:SKCanvasView
-            x:Name="canvasViews"
-            HorizontalOptions="FillAndExpand"
-            PaintSurface="CanvasView_OnPaintSurface"
-            VerticalOptions="FillAndExpand" />
-    </StackLayout>
+    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    ios:Page.UseSafeArea="true">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            x:Name="ButtonPickImage"
+            Clicked="ButtonPickImage_OnClicked"
+            Text="Pick Image" />
+        <ToolbarItem
+            x:Name="ButtonSave"
+            Clicked="ButtonSave_OnClicked"
+            Text="Save" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <skia:SKCanvasView
+                x:Name="canvasViews"
+                HorizontalOptions="FillAndExpand"
+                PaintSurface="CanvasView_OnPaintSurface"
+                VerticalOptions="FillAndExpand" />
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>
