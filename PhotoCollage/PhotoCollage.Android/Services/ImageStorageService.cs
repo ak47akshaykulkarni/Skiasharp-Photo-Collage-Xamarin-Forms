@@ -17,7 +17,7 @@ namespace PhotoCollage.Droid.Services
             try
             {
                 File picturesDirectory = Environment.GetExternalStoragePublicDirectory(Environment.DirectoryPictures);
-                File spinPaintDirectory = new File(picturesDirectory, "SpinPaint");
+                File spinPaintDirectory = new File(picturesDirectory, "PhotoCollage");
                 spinPaintDirectory.Mkdirs();
 
                 using (File bitmapFile = new File(spinPaintDirectory, filename))
@@ -28,11 +28,7 @@ namespace PhotoCollage.Droid.Services
                     {
                         await outputStream.WriteAsync(bitmapData);
                     }
-
-                    // Make sure it shows up in the Photos gallery promptly.
-                    MediaScannerConnection.ScanFile(Android.App.Application.Context,
-                        new string[] { bitmapFile.Path },
-                        new string[] { "image/png", "image/jpeg" }, null);
+                    MediaScannerConnection.ScanFile(Android.App.Application.Context, new string[] { bitmapFile.Path }, new string[] { "image/png", "image/jpeg" }, null);
                     return true;
                 }
             }

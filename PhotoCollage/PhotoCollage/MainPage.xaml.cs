@@ -61,7 +61,6 @@ namespace PhotoCollage
                     canvas.DrawImage(SKImage.FromBitmap(bitmap), rects[i], paint);
                     paint.TextSize = 250;
                     canvas.DrawText(i.ToString(), new SKPoint(rects[i].MidX, rects[i].MidY), paint);
-                    //canvas.DrawRect(rects[i], paint);
                     i++;
                 }
             }
@@ -82,10 +81,8 @@ namespace PhotoCollage
                 var skBitmap = SKBitmap.Decode(data.AsStream(true));
 
                 DateTime dt = DateTime.Now;
-                string filename = String.Format("Collage-{0:D4}{1:D2}{2:D2}-{3:D2}{4:D2}.png",
-                    dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute);
-
-
+                string filename = String.Format("Collage-{0:D4}{1:D2}{2:D2}-{3:D2}{4:D2}.png", dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute);
+                
                 var scaled = skBitmap.Resize(new SKImageInfo(_width * 2, _height * 2),
                     SKBitmapResizeMethod.Lanczos3);
                 SKImage image = SKImage.FromBitmap(scaled);
@@ -94,7 +91,7 @@ namespace PhotoCollage
                 
                 IImageStorageService dependencyService = DependencyService.Get<IImageStorageService>();
 
-                // Save the bitmap and get a boolean indicating success.
+                //Save the bitmap and get a boolean indicating success.
                 bool result = await dependencyService.SaveBitmap(png.ToArray(), filename);
 
                 if (result)
